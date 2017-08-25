@@ -8,6 +8,7 @@ import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 
@@ -51,10 +52,28 @@ public class SinVoice extends CordovaPlugin implements SinVoicePlayer.Listener {
     }
 
     private void getWifiName(CallbackContext callbackContext) {
-        WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-        String currentSSID = wifiInfo.getSSID();
-        callbackContext.success(currentSSID);
+
+        WifiInfo mWifiInfo = wifiManager.getConnectionInfo();
+        String ssid = null;
+        if (mWifiInfo != null ) {
+            int len = mWifiInfo.getSSID().length();
+            if (mWifiInfo.getSSID().startsWith("\"") && mWifiInfo.getSSID().endsWith("\"")) {
+                ssid = mWifiInfo.getSSID().substring(1, len - 1);
+            } else {
+                ssid = mWifiInfo.getSSID();
+            }
+        }
+//        JSONObject jsonObject = new JSONObject();
+//        try {
+//            jsonObject.put("ssid",ssid);
+//            jsonObject.put("bssid",mWifiInfo.getBSSID());
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+        callbackContext.success(ssid);
     }
+
+
 
 
     private void startSend(String wifi,String password) {
