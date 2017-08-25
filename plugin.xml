@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-sinvoice" version="2.1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>cordova-plugin-sinvoice</name>
+    <js-module name="sinVoice" src="www/cordova-plugin-sinvoice.js">
+        <clobbers target="sinVoice" />
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="SinVoice">
+                <param name="android-package" value="com.thomas.sinvoice.SinVoice" />
+            </feature>
+
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+            <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+            <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
+            <uses-permission android:name="android.permission.WAKE_LOCK" />
+            <uses-permission android:name="android.permission.INTERNET" />
+        </config-file>
+
+        <source-file src="src/android/src/libs/armeabi/libsinvoice.so" target-dir="libs/armeabi-v7a"/>
+        <source-file src="src/android/src/libs/x86/libsinvoice.so" target-dir="libs/x86"/>
+
+        <source-file src="src/android/src/com/thomas/sinvoice/SinVoice.java" target-dir="src/com/thomas/sinvoice"/>
+        <source-file src="src/android/src/com/libra/sinvoice/BufferData.java" target-dir="src/com/libra/sinvoice"/>
+        <source-file src="src/android/src/com/libra/sinvoice/BufferQueue.java" target-dir="src/com/libra/sinvoice"/>
+        <source-file src="src/android/src/com/libra/sinvoice/Common.java" target-dir="src/com/libra/sinvoice"/>
+        <source-file src="src/android/src/com/libra/sinvoice/Encoder.java" target-dir="src/com/libra/sinvoice"/>
+        <source-file src="src/android/src/com/libra/sinvoice/LogHelper.java" target-dir="src/com/libra/sinvoice"/>
+        <source-file src="src/android/src/com/libra/sinvoice/PcmPlayer.java" target-dir="src/com/libra/sinvoice"/>
+        <source-file src="src/android/src/com/libra/sinvoice/Queue.java" target-dir="src/com/libra/sinvoice"/>
+        <source-file src="src/android/src/com/libra/sinvoice/Record.java" target-dir="src/com/libra/sinvoice"/>
+        <source-file src="src/android/src/com/libra/sinvoice/SinVoicePlayer.java" target-dir="src/com/libra/sinvoice"/>
+        <source-file src="src/android/src/com/libra/sinvoice/SinVoiceRecognition.java" target-dir="src/com/libra/sinvoice"/>
+        <source-file src="src/android/src/com/libra/sinvoice/VoiceDecoder.java" target-dir="src/com/libra/sinvoice"/>
+        <source-file src="src/android/src/com/libra/sinvoice/VoiceEncoder.java" target-dir="src/com/libra/sinvoice"/>
+        <source-file src="src/android/src/com/libra/sinvoice/VoiceRecognition.java" target-dir="src/com/libra/sinvoice"/>
+    </platform>
+</plugin>
