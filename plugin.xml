@@ -37,4 +37,42 @@
         <source-file src="src/android/src/com/libra/sinvoice/VoiceEncoder.java" target-dir="src/com/libra/sinvoice"/>
         <source-file src="src/android/src/com/libra/sinvoice/VoiceRecognition.java" target-dir="src/com/libra/sinvoice"/>
     </platform>
+
+    <!-- ios -->
+     <platform name="ios">
+         <config-file target="config.xml" parent="/*">
+             <feature name="SinVoice">
+                 <param name="ios-package" value="CDVSinVoice" />
+             </feature>
+         </config-file>
+
+         <header-file src="src/ios/ESPcmPlayer.h" />
+         <source-file src="src/ios/GSAppDelegate.m" />
+         <header-file src="src/ios/CDVSinVoice.h" />
+         <source-file src="src/ios/CDVSinVoice.m" />
+
+         <header-file src="src/ios/GSAppDelegate.h" />
+         <header-file src="src/ios/ESPcmRecorder.h" />
+         <header-file src="src/ios/MyPcmRecorderImp.h" />
+         <header-file src="src/ios/ESType.h" />
+         
+         <header-file src="src/ios/MyPcmPlayerImp.h" />
+         <source-file src="src/ios/MyPcmPlayerImp.m" />
+         <source-file src="src/ios/MyPcmRecorderImp.m" />
+         <header-file src="src/ios/SinVoicePlayer.h" />
+        <header-file src="src/ios/SinVoiceRecognizer.h" />
+
+         <framework src="AudioToolbox.framework"  />
+         <framework src="CoreGraphics.framework" />
+         <framework src="Foundation.framework" />
+         <framework src="UIKit.framework" />
+        <framework src="src/ios/libSVSinVoiceLib.a" custom="true" />
+        
+         <preference name="MICROPHONE_USAGE_DESCRIPTION" default=" " />
+         <config-file target="*-Info.plist" parent="NSMicrophoneUsageDescription">
+             <string>$MICROPHONE_USAGE_DESCRIPTION</string>
+         </config-file>
+
+         
+     </platform>
 </plugin>
