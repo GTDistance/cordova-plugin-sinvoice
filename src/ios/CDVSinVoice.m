@@ -85,9 +85,13 @@ SinVoicePlayerCallback gSinVoicePlayerCallback = {onSinVoicePlayerStart, onSinVo
     return ssid;
 }
 - (void)startSend:(CDVInvokedUrlCommand*)command{
+    NSArray *arguments = command.arguments;
+    NSString *ssid = arguments[0];
+    NSString *password = arguments[1];
+    NSString *splitStr = @"||";
     NSLog(@"push start play");
     int index = 0;
-    NSString* xx = @"qwleisld";
+    NSString* xx = [NSString stringWithFormat:@"%@%@%@",ssid, splitStr,password];
     const char* str = [xx cStringUsingEncoding:NSUTF8StringEncoding];
     
     mPlayCount = (int)strlen(str);
