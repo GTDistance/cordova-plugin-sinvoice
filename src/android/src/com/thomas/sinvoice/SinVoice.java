@@ -30,7 +30,7 @@ public class SinVoice extends CordovaPlugin implements SinVoicePlayer.Listener {
         mSinVoicePlayer = new SinVoicePlayer();
         mSinVoicePlayer.init(cordova.getActivity());
         mSinVoicePlayer.setListener(this);
-        wifiManager = (WifiManager) cordova.getActivity().getSystemService(cordova.getActivity().WIFI_SERVICE);
+        wifiManager = (WifiManager) cordova.getActivity().getApplicationContext().getSystemService(cordova.getActivity().getApplicationContext().WIFI_SERVICE);
         System.out.println("pluginInitialize");
     }
 
